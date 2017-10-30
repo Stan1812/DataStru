@@ -134,5 +134,5 @@ void ReverseList(LinkList L)
         p->next = L->next; /*将当前处理节点p插入到逆置L的表头*/
         L->next = p;
         p = q; /*p指向下一个待插入的节点*/
-    }
+    }//头还是头@_@
 }
