@@ -7,11 +7,11 @@
 #define OVERFLOW 0
 #define maxinum 10
 typedef int Status;
-Stack Sta
+struct Sta
 {
     int data[maxinum];
     int top;
-}
+};
 void init_stack(SqStack *S)
 {
     S->top = -1;
