@@ -15,7 +15,7 @@ int main()
     Student stu[4], *p = stu;
     input(p);
     print(max(p));
-    query_not_pass(p);
+    query_not_pass(p); 
     return 0;
 }
 void input(Student stu[])
@@ -25,7 +25,7 @@ void input(Student stu[])
     for (i = 0; i < 4; i++)
     {
         printf("student%d:", i);
-        scanf("%s", stu[i].name);
+        scanf("%s", &stu[i].name);
         scanf("%d", &stu[i].num);
         for (k = 0; k < 4; k++)
         {

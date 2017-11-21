@@ -47,14 +47,14 @@ PNode create_list()
 void get_best(PNode pHead)
 {
     PNode p = pHead->next;
-    float best = 0;
+    // float best = 0;
     while (p != NULL)
     {
         int total = 0;
-        if (p->averge > best)
-        {
-            best = p->averge;
-        }
+        // if (p->averge > best)
+        // {
+        //     best = p->averge;
+        // }
         for (int k = 0; k < 4; k++)
         {
             if (p->grade[k] < 60)
@@ -68,7 +68,7 @@ void get_best(PNode pHead)
         }
         p = p->next;
     }
-    printf("最高平均分为：%6.2f", best);
+    // printf("最高平均分为：%6.2f", best);
     printf("\n");
 }
 int main()
