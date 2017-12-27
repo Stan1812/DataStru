@@ -4,6 +4,9 @@
 using namespace std;
 const int maxExprLen = 100;
 const int stackInitSize = 100;
+static int leaves = 1;
+static int n = 1;
+static int deepth = 0;
 //定义二叉树的存储结构
 typedef struct BiTNode
 {
@@ -27,7 +30,7 @@ struct stack
 };
 //全局定义
 stack optrS, btnS; //操作数栈和树的节点
-//符号表 
+//符号表
 // 枚举类型enum,默认未显式赋值的值为上一个值+1
 enum
 {
@@ -154,6 +157,54 @@ void createSubtree(BiTree &t, char ch, stack &ptr)
     t = m;
     push(ptr, e);
 }
+
+//求树的深度
+int BiTreeDepth(BiTree &T)
+{
+    int t; //保存 n 的值
+    if (T->lChild != NULL && T->rChild != NULL)
+    {
+        n++;
+        if (n > deepth)
+            deepth = n;
+        t = n;
+        BiTreeDepth(T->lChild);
+        n = t;
+        BiTreeDepth(T->rChild);
+    }
+    else if (T->lChild != NULL && T->rChild == NULL)
+    {
+        n++;
+        if (n > deepth)
+            deepth = n;
+        BiTreeDepth(T->lChild);
+    }
+    else if (T->lChild == NULL && T->rChild != NULL)
+    {
+        n++;
+        if (n > deepth)
+            deepth = n;
+        //被减数先进栈，故交换所取值
+        BiTreeDepth(T->rChild);
+    }
+    n = 1;
+    return 0;
+}
+// 求叶子数
+void BiTreeleaves(BiTree &T)
+{
+    if (T->lChild != NULL)
+    {
+        leaves++;
+        BiTreeleaves(T->lChild);
+    }
+    if (T->rChild != NULL)
+    {
+        leaves++;
+        BiTreeleaves(T->rChild);
+    }
+}
+
 //判断运算符的优先级
 int precede(char a, char b)
 {
@@ -282,8 +333,15 @@ int main(int argc, char **argv)
          << endl;
     getExpr(expr);
     createBiTree(t, expr, opnd, op);
+
     cout << endl;
     cout << "计算结果为: " << evaluateExpr(t, opnd) << endl
+         << endl;
+    BiTreeDepth(t);
+    cout << "深度 = " << deepth
+         << endl;
+    BiTreeleaves(t);
+    cout << "叶子数为:" << (leaves + 1) / 2 << endl
          << endl;
     cout << "*****************************" << endl;
     getchar();
