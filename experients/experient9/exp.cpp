@@ -1,12 +1,11 @@
-
 #include "iostream"
 #include <malloc.h>
 #include <stdlib.h>
 #include <time.h>
 using namespace std;
 #define MAXSIZE 10000
-int compCount = 0;  //关键字的比较次数
-int shiftCount = 0; //关键字的移动次数
+int compCount = 0;  
+int shiftCount = 0; 
 typedef struct
 {
     int key;
