@@ -12,9 +12,34 @@ typedef struct Node
     float averge;
     struct Node *next; //指针域
 } Node, *PNode;
+
 /** 
+ * 
 **创建链表 
 */
+PNode create_list(){
+    int leng,i;
+    PNode PHead =malloc(sizeof(Node));
+    PHead->next = NULL;
+    PNode PTail  = PHead;
+    for(int i=0;i>leng;i++){
+        PNode PNew =malloc(sizeof(Node));
+        PNew ->next = NULL;
+        PTail ->next=PNew;
+        PTail =PNew; 
+    } 
+}
+// insert List
+PNode insertNode(PNode PHead){
+    int i,
+    PNode p = PHead; 
+    while(p!=NULL){
+        p=p->next;
+        if(i==pos){
+        
+        }
+    }
+}
 PNode create_list()
 {
     int len, i;
